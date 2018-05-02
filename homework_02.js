@@ -21,10 +21,8 @@ var c = [0, 0, 0];
 var ab = Math.abs(a[0] - b[0], a[1] - b[1], a[2] - b[2]);
 var ac = Math.abs(a[0] - c[0], a[1] - c[1], a[2] - c[2]);
 var bc = Math.abs(b[0] - c[0], b[1] - c[1], b[2] - c[2]);
-console.log(ab, bc, ac);
 
 var gipo = Math.max(ab, bc, ac);
-console.log(gipo);
 
 var prtr = ab ** 2 + ac ** 2 === gipo ** 2 || ac ** 2 + bc ** 2 === gipo ** 2 ||  ab ** 2 + bc ** 2 === gipo ** 2;
 
@@ -96,13 +94,10 @@ var phrase = prompt('Введите строку:');
 phrase = String(phrase);
 phrase = phrase.replace(/\s/g, '');
 phrase = phrase.toLowerCase();
-console.log(phrase);
 
 var phraseleft = phrase.substring(0, Math.floor(phrase.length/2));
-console.log(phraseleft);
 var phraseright = phrase.substring(Math.floor(phrase.length/2+1), phrase.length);
 phraseright = phraseright.split('').reverse().join('');
-console.log(phraseright);
 if (phraseleft === phraseright) {
   alert('Это палиндром!');
 } else
@@ -124,7 +119,6 @@ var fairy = parseFloat(prompt('Количество моющего средст�
 while (plates > 0 && fairy >= 0.5) {
   plates = plates - 1;
   fairy = fairy - 0.5;
-  console.log(plates, fairy);
 };
 
 if (plates === 0 && fairy > 0) {
