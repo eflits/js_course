@@ -24,15 +24,15 @@ console.log(numsmin);
 var num = prompt('Введите число');
 var numstr = String(num);
 
-if (length.numstr = 3) {
+if (length.numstr === 3) {
 	numsymb = "Трехзначное";
-} else if (length.numstr = 2) {
+} else if (length.numstr === 2) {
 	numsymb = "Двузначное";
 } else
-	numsymb = "Двузначное";
+	numsymb = "Однозначное";
 console.log(numsymb);
 
-if (Math.sign(num) == 1) {
+if (Math.sign(num) === 1) {
 	numsymb = numsymb + " положительное";
 } else numsymb = numsymb + " отрицательное";
 	console.log(numsymb);
