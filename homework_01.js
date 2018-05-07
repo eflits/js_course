@@ -34,7 +34,7 @@ console.log(numsymb);
 
 if (Math.sign(num) == 1) {
 	numsymb = numsymb + " положительное";
-} else (numsymb = numsymb + " отрицательное");
+} else numsymb = numsymb + " отрицательное";
 	console.log(numsymb);
 
 /* 3.

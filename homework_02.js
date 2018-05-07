@@ -18,14 +18,14 @@ var a = [0, 3, 0];
 var b = [3, 0, 0];
 var c = [0, 0, 0];
 
-var ab = Math.abs(a[0] - b[0], a[1] - b[1], a[2] - b[2]);
-var ac = Math.abs(a[0] - c[0], a[1] - c[1], a[2] - c[2]);
-var bc = Math.abs(b[0] - c[0], b[1] - c[1], b[2] - c[2]);
-
+var ab = Math.sqrt((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2 + (a[2] - b[2]) ** 2);
+var ac = Math.sqrt((a[0] - c[0]) ** 2 + (a[1] - c[1]) ** 2 + (a[2] - c[2]) ** 2);
+var bc = Math.sqrt((b[0] - c[0]) ** 2 + (b[1] - c[1]) ** 2 + (b[2] - c[2]) ** 2);
+console.log(ab, ac, bc);
 var gipo = Math.max(ab, bc, ac);
-
-var prtr = ab ** 2 + ac ** 2 === gipo ** 2 || ac ** 2 + bc ** 2 === gipo ** 2 ||  ab ** 2 + bc ** 2 === gipo ** 2;
-
+console.log(gipo);
+var prtr = ab ** 2 + ac ** 2 === Math.round(gipo ** 2) || ac ** 2 + bc ** 2 === Math.round(gipo ** 2) ||  ab ** 2 + bc ** 2 === Math.round(gipo ** 2);
+console.log(prtr);
 if (prtr){
   console.log("Треугольник прямоугольный")
 } else {
@@ -69,7 +69,7 @@ while (items < 1 || items > 5) {
     var items= prompt('Выберите единицу измерения (1,2,3,4,5):\n1-Дециметр;\n2-Километр;\n3-метр;\n4-Миллиметр;\n5-Сантиметр')
 };
 
-var length= prompt('Введите длину отрезка:');
+var length = parseFloat(prompt('Введите длину отрезка:'));
 switch(items) {
   case '1':
     length = length * 0.1;
@@ -96,7 +96,12 @@ phrase = phrase.replace(/\s/g, '');
 phrase = phrase.toLowerCase();
 
 var phraseleft = phrase.substring(0, Math.floor(phrase.length/2));
-var phraseright = phrase.substring(Math.floor(phrase.length/2+1), phrase.length);
+console.log(phraseleft);
+if (phrase.length % 2) {
+  var phraseright = phrase.substring(Math.floor(phrase.length/2 + 1), phrase.length)
+} else var phraseright = phrase.substring(Math.floor(phrase.length/2), phrase.length);
+
+console.log(phraseright);
 phraseright = phraseright.split('').reverse().join('');
 if (phraseleft === phraseright) {
   alert('Это палиндром!');
@@ -106,11 +111,11 @@ if (phraseleft === phraseright) {
 // Задача 6
 var year = prompt('Введите год (н.э.):');
 
-if (year % 4 === 0) {
+if (year % 100 !== 0 && year % 4 === 0) {
   alert(year + '-й год - високосный!')
-} else {
-  alert(year + '-й год - не високосный!')
-}
+} else if (year % 400 === 0) {
+  alert(year + '-й год - високосный!')
+} else alert(year + '-й год - не високосный!');
 
 // Задача 7
 var plates = parseInt(prompt('Количество тарелок, шт.:'));
@@ -125,4 +130,4 @@ if (plates === 0 && fairy > 0) {
   console.log(`Все тарелки вымыты. Осталось ${fairy} ед. моющего средства`);
 } else if (plates > 0 && fairy < 0.5) {
   console.log(`Моющее средство закончилось. Осталось ${plates} тарелок`)
-} else if (plates == 0 && fairy == 0) console.log('Все тарелки вымыты, моющее средство закончилось');
+} else if (plates === 0 && fairy === 0) console.log('Все тарелки вымыты, моющее средство закончилось');
