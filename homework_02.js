@@ -95,15 +95,8 @@ phrase = String(phrase);
 phrase = phrase.replace(/\s/g, '');
 phrase = phrase.toLowerCase();
 
-var phraseleft = phrase.substring(0, Math.floor(phrase.length/2));
-console.log(phraseleft);
-if (phrase.length % 2) {
-  var phraseright = phrase.substring(Math.floor(phrase.length/2 + 1), phrase.length)
-} else var phraseright = phrase.substring(Math.floor(phrase.length/2), phrase.length);
-
-console.log(phraseright);
-phraseright = phraseright.split('').reverse().join('');
-if (phraseleft === phraseright) {
+phrasereversed = phrase.split('').reverse().join('');
+if (phrase === phrasereversed) {
   alert('Это палиндром!');
 } else
   alert('Не палиндром!');
