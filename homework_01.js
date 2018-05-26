@@ -24,9 +24,9 @@ console.log(numsmin);
 var num = prompt('Введите число');
 var numstr = String(num);
 
-if (length.numstr === 3) {
+if (numstr.length === 3) {
 	numsymb = "Трехзначное";
-} else if (length.numstr === 2) {
+} else if (numstr.length === 2) {
 	numsymb = "Двузначное";
 } else
 	numsymb = "Однозначное";
