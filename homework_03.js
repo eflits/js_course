@@ -18,6 +18,6 @@ console.log(str);
 
 // Задача 3
 var password = prompt('Введите пароль:');
-var reg = /(?=.*[0-9]{2,})(?=.*[!$#%])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{9,}/;
+var reg = /(?=.*[0-9]{3,})(?=.*[!$#%])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{9,}/;
 
 console.log(reg.test(password));
