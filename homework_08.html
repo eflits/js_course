@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <p> Задача 1 <br></br>Создать функцию которая выводит время в html и обновляет значения каждую секунду.
+      Время выводить в формате чч:мм:cc, при этом часы, минуты и секунды отобразить разными цветами.</p>
+  <div id="time" style="display: flex">
+    <div id="hours">22</div>
+    <div id="minutes">22</div>
+    <div id="seconds">22</div>
+  </div>
+  <script>
+    var time = function() {
+      var now = new Date();
+      var hour = now.getHours().toString();
+      var minute = now.getMinutes().toString();
+      // TODO: тут ещё часам и минутам +0 дописать :(
+      if (now.getSeconds() < 10) {
+        var second = '0' + now.getSeconds().toString()
+      } else var second = now.getSeconds().toString();
+      hours.textContent = hour + ':';
+      hours.style.color = "red";
+  	  minutes.textContent = minute + ':';
+      minutes.style.color = "green";
+  	  seconds.textContent = second;
+      seconds.style.color = "blue";
+    }
+    time();
+    setInterval(time, 1000);
+  </script>
+  <div> Задача 2<br></br>
+  Создать объект «Товар» включающий:
+  - свойства, такие как фото, артикул, опsисание и т.п.;
+  - метод, которому при вызове передается id пустого div элемента и в этот html
+  элемент данный метод создаст и внесёт все необходимые html элементы, стили,
+  и содержание для отображения всей информации хранящихся в свойствах объекта
+  о данном товаре. Дизайн оформления информации в html о товаре –
+  это ваше творчество.</div>
+
+  <div id="card"></div>
+<script>
+var piece = {
+  name: 'apple',
+  photo: "img/apple.jpg",
+  key: '123',
+  description: 'Apple vulgaris',
+  pieceCard : function(card) {
+    var img = document.createElement('img');
+    img.src = this.photo;
+    document.getElementById(card).appendChild(img);
+    spanAdd(this.name);
+    spanAdd(this.key);
+    spanAdd(this.description);
+
+    function spanAdd(property) {
+        var span = document.createElement('span');
+        span.innerText = property;
+        span.style.display = 'block';
+        span.style.marginLeft = '30px';
+        document.getElementById(card).appendChild(span);
+      }
+    }
+  }
+  piece.pieceCard('card');
+</script>
+<div> <br></br><br></br><br></br>Задача 3 - не выполнена<br></br>
+Создать светофор (красный, желтый, зелёный).
+Переключать цвет у светофора через каждые 2 сек сверху вниз и снизу вверх.</div>
+<div id='traffic'></div>
+<script>
+/* TODO
+  function Traffic(colortr) {
+  this.colortr = colortr;
+  this.active = true;
+  this.print = function(){
+    var tr = document.createElement('div');
+    document.getElementById('traffic').appendChild(tr);
+    tr.style.textContent = this.colortr;
+    tr.style.padding = '30px';
+    tr.style.color = this.colortr;
+  }
+  this.active = function active() {
+    if (active) {
+      this.colortr = colortr;
+    } else this.colortr = black;
+  }
+  };
+  var red = new Traffic;
+*/
+</script>
+</body>
+</html>
