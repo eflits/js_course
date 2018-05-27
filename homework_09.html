@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div>Задача 1</div>
+    <div>Даны несколько div элементов на html. По первому нажатию на каждый div
+      он перекрашивается зеленым цветом, при повторном нажатии
+      перекрашивается обратно и так далее каждый клик происходит
+      чередование цвета.</div>
+      <div class='clickme'>Click Me!!!</div>
+      <div class="clickme">Click Me!!!</div>
+      <div class="clickme">Click Me!!!</div>
+
+      <script>
+      var clk = document.getElementsByClassName('clickme');
+      var j = 1;
+
+      for(var i = 0; i < clk.length; i++){
+      	clk[i].onclick = function changeColor() {
+          if (j % 2 !== 0) {
+            this.style.color = 'red'
+          } else this.style.color = 'blue';
+          j++;
+        }
+      }
+      </script>
+      <div>Задача 2</div>
+      <div>
+      Реализовать счётчик нажатий на
+      кнопку: Дана кнопка внутри неё
+      записана цифра. При клике на
+      кнопку – её значение должно
+      увеличиваться на единицу.
+      </div>
+      <button id='button'>0</button>
+	    <script>
+  		  var i = 0;
+  		  button.onclick = function clickButton() {
+    			i++;
+    			button.innerText = i;
+  		  }
+      </script>
+      </div>
+      <div>Задача 3 - не выполнена</div>
+      Изобразить клавиатуру и расположенные на ней клавиши в виде html документа. При нажатии клавиши пользователем на клавиатуре, подсвечивать нажатую
+      клавишу на клавиатуре изображенной в html и выводить нажатое значение.
+      div
+  </body>
+</html>
