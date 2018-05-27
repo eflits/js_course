@@ -1,0 +1,55 @@
+<html>
+ <head>
+   <p> Задача 1 <br></br> Подключить стороннюю библиотеку для построения графиков.
+   Построить график функции y = f(x):
+   y = 5/x, при x>=1;
+   y = x*x – 4*x, при x<1.
+   Шаг варьирования x равен 0.01 и интервал варьирования -5 < x < 5.
+   Расчёт функции y = f(x) реализовать в виде отдельной функции.</p>
+
+   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   <script type="text/javascript">
+     google.charts.load('current', {'packages':['corechart']});
+     google.charts.setOnLoadCallback(drawChart);
+     function drawChart() {
+       var data = new google.visualization.DataTable();
+       data.addColumn('number', 'X');
+       data.addColumn('number', 'Y');
+
+       var options = {
+         title: 'My function',
+         curveType: 'function',
+         legend: { position: 'bottom' }
+       };
+       var fx = function() {
+         var arr = [];
+         for(var i = -5; i <= 5; i = i + 0.01) {
+           var x = i;
+           if (x < 1) {
+             var y = x * x - 4 * x;
+           } else {
+             y = 5/x;
+           }
+           arr.push([x,y]);
+         }
+         return arr;
+       }
+
+       data.addRows(fx());
+       var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+       chart.draw(data, options);
+     }
+   </script>
+   <div id="curve_chart" style="width: 900px; height: 500px"></div>
+
+<p> Задача 2 - не выполнена <br></br>Подключить стороннюю библиотеку для юнит тестирования.
+Написать несколько тестов для функции, рассчитывающей y = 1/x + sqrt(x).</p>
+
+<p> Задача 3 - не выполнена <br></br>ПНаписать свою подключаемую js библиотеку для работы с массивом, хранящим целые числа.
+Библиотека должна обладать следующими методами:
+- поиск минимального элемента в переданном массиве;
+- поиск максимально элемента в переданном массиве;
+- расчет среднего арифметического значения элементов переданного массива;
+- создание копии (клонирование) переданного массива.</p>
+ </body>
+</html>
