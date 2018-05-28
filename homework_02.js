@@ -18,14 +18,11 @@ var a = [0, 3, 0];
 var b = [3, 0, 0];
 var c = [0, 0, 0];
 
-var ab = Math.sqrt((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2 + (a[2] - b[2]) ** 2);
-var ac = Math.sqrt((a[0] - c[0]) ** 2 + (a[1] - c[1]) ** 2 + (a[2] - c[2]) ** 2);
-var bc = Math.sqrt((b[0] - c[0]) ** 2 + (b[1] - c[1]) ** 2 + (b[2] - c[2]) ** 2);
-console.log(ab, ac, bc);
-var gipo = Math.max(ab, bc, ac);
-console.log(gipo);
-var prtr = ab ** 2 + ac ** 2 === Math.round(gipo ** 2) || ac ** 2 + bc ** 2 === Math.round(gipo ** 2) ||  ab ** 2 + bc ** 2 === Math.round(gipo ** 2);
-console.log(prtr);
+var absquare = (a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2 + (a[2] - b[2]) ** 2;
+var acsquare = (a[0] - c[0]) ** 2 + (a[1] - c[1]) ** 2 + (a[2] - c[2]) ** 2;
+var bcsquare = (b[0] - c[0]) ** 2 + (b[1] - c[1]) ** 2 + (b[2] - c[2]) ** 2;
+var giposquare = Math.max(absquare, bcsquare, acsquare);
+var prtr = absquare + acsquare === Math.round(giposquare) || acsquare + bcsquare === Math.round(giposquare) ||  absquare + bcsquare === Math.round(giposquare);
 if (prtr){
   console.log("Треугольник прямоугольный")
 } else {
