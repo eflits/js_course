@@ -21,20 +21,32 @@ console.log(numsmin);
 "положительное однозначное число" и т.д.
 */
 
-var num = prompt('Введите число');
+var num = parseInt(prompt('Введите число'));
 var numstr = String(num);
 
-if (numstr.length === 3) {
+if (num > 0) {
+	if (numstr.length === 3) {
 	numsymb = "Трехзначное";
 } else if (numstr.length === 2) {
 	numsymb = "Двузначное";
 } else
 	numsymb = "Однозначное";
-console.log(numsymb);
+} else if (num < 0) {
+	if (numstr.length === 4) {
+	numsymb = "Трехзначное";
+} else if (numstr.length === 3) {
+	numsymb = "Двузначное";
+} else
+	numsymb = "Однозначное";
+}
 
 if (Math.sign(num) === 1) {
 	numsymb = numsymb + " положительное";
-} else numsymb = numsymb + " отрицательное";
+} else if (Math.sign(num) === -1) {
+	numsymb = numsymb + " отрицательное";
+} else if (Math.sign(num) === 0) {
+	numsymb = "Нулевое число";
+}
 	console.log(numsymb);
 
 /* 3.
