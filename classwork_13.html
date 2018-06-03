@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id=
+  "app1">
+  <input type=
+  "text" v-on:input=
+  "setMessage" />
+  <p>{{message}}</p>
+  </div>
+
+  <script>
+  var app = new Vue({
+  el: '#app1', //корневой элемент приложения
+  data: { //используемые данные
+  message: 'Hello Vue!'
+  },
+  methods: {//действия выполняемые в приложении
+  setMessage: function(event){
+  this.message = event.target.value;
+  }
+  }
+  })
+  </script>
+
+  <div id="app2"> <a v-bind:href="link">{{text}}</a>
+  <!-- <a :href="link">{{text}}</a> краткая форма -->
+  </div>
+
+  <script>
+  var app = new Vue({
+  el: '#app2',
+  data: {
+  text: 'Google',
+  link:'https://google.com'
+  }
+  });
+  </script>
+
+
+  <div id=
+  "app3">
+  <div v-html=
+  "message"></div>
+  <div>{{message}}</div>
+  </div>
+
+  <script>
+  var app = new Vue({
+  el: '#app3',
+  data: {message:'<h2>Hello</h2>'}
+  });
+  </script>
+
+
+  <div id=
+  "app4">
+  <button v-on:click=
+  "counter++">+</button>
+  <!-- Сокращенный синтаксис обработчиков событий -->
+  <button @click=
+  "if(counter>0) counter--;">-</button>
+  <div>{{counter}}</div>
+  </div>
+  <script>
+  var app = new Vue({
+  el: '#app4',
+  data: {counter:0},
+  });
+  </script>
+
+  <div id=
+  "app5">
+  <input type=
+  "text" v-model=
+  "name" /><br><br>
+  <input type=
+  "text" v-model=
+  "name" />
+  <p>Name: {{name}}</p>
+  </div>
+<script>
+  var app = new Vue({
+  el: '#app5',
+  data: {name: 'Tom', age:99}
+  });
+  </script>
+
+  <div id="app6">
+  <input type="text" v-model="name" />
+  <input type="text" v-model="age" />
+  <p>Имя: {{name}} Возраст {{age}}</p>
+  <p>{{checkAge()}}</p>
+  </div>
+  <script>
+  var app = new Vue({
+  el: '#app6',
+  data: {name:'Tom', age:25},
+  methods:{
+  checkAge: function(){
+  console.log("method");
+  if(this.age > 17)
+  return "доступ разрешен";
+  else
+  return "доступ запрещен";
+  }
+  }
+  });
+  </script>
+
+  <div id=
+  "app7">
+  <input type="text" v-model=
+  "firstname" />
+  <input type="text" v-model=
+  "lastname" />
+  <input type="text" v-model="fullname" />
+  <p>Имя: {{fullname}}</p>
+  </div>
+  <script>
+  var app = new Vue({
+  el: '#app7',
+  data: {firstname:'Tom', lastname:'Smith'},
+  computed:{
+  fullname: {
+  get: function () {
+  return this.firstname + ' ' +
+  this.lastname;
+  },
+  set: function (newValue) {
+  var names = newValue.split(' ')
+  this.firstname = names[0]
+  this.lastname = names[names.length - 1]
+  }
+  }
+  }
+  });
+  </script>
+
+<div id=
+"app">
+<div class="region" v-bind:class="{active:
+isActive}" v-on:click=
+"isActive=!isActive"></div>
+<div class=
+"region"></div>
+</div>
+<script>
+var app = new Vue({
+el: "#app",
+data: {isActive : false}
+});
+</script>
+
+
+
+
+
+
+
+
+
+<!--  <table>
+    <tr>
+      <td>111</td>
+      <td>111</td>
+      <td>111</td>
+      <td>111</td>
+    </tr>
+    <tr>
+      <td>111</td>
+      <td>111</td>
+      <td>111</td>
+      <td>111</td>
+    </tr>
+    <tr>
+      <td>111</td>
+      <td>111</td>
+      <td>111</td>
+      <td>111</td>
+    </tr>
+  </table>
+  <div>
+    <button>Click me!</button>
+  </div>
+  <div id = 'print'> печать</div>
+  <div>
+    <input type = 'text'></input>
+    <span>Осталось 15</span>
+  </div>
+<script>
+    $("#list .item").css("background-color", function(i,val){
+	if($(this).text() == "Земля")
+	   return "#cceecc";
+	else
+	   return val;
+    });
+    $('td').filter(':odd')
+          .css('background-color', 'green')
+          .end()
+          .filter(':even')
+          .css('background-color', 'green');
+
+    $('#print').on('click', function(e) {
+            window.print()
+          });
+    $('button').one('click', function(e) {
+      $(this).text('12344');
+    });
+
+    $('div input').on('input', function(e) {
+      let len = this.value.length;
+      $('div span').text('Осталось' + 15 - len);
+    });
+    $(document).ready (function(){
+      $('td').mouseover( function(e){
+        ('#print')
+      }).mousemove(function(e){
+
+      }
+    )
+    })
+</script>
+-->
+
+</body>
+</html>

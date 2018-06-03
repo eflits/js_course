@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+</head>
+<body>
+
+<style>
+
+#win1 {
+  display:none;
+  position: absolute;
+  color: black;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 1001;
+  -moz-opacity: 0.8;
+  opacity: .80;
+  filter: alpha(opacity=80);
+}
+
+#win2 {
+      display:none;
+      color: white;
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      padding: 16px;
+      border-radius: 50px;
+      font-family: fantasy;
+      align-content: center;
+      text-align: center;
+      background-color: white;
+      z-index: 1002;
+      overflow: auto;
+      align-items: center;
+      background: radial-gradient(circle at 50% 120%, #50686b, #76deef 10%, #34648e 80%, #ffffff 100%);
+}
+
+figure{
+  display: inline-block;
+  width: 10%;
+  height: 10%;
+  margin: 0;
+  border-radius: 50%;
+  position: relative;
+  background: radial-gradient(circle at 50% 120%, #81e8f6, #76deef 10%, #055194 80%, #062745 100%);
+  transform-origin: 25px;
+  text-align: center;
+  color: white;
+  vertical-align: bottom;
+}
+figure:before {
+  content: "";
+  position: absolute;
+  top: 1%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 0px, #ffffff, rgba(255, 255, 255, 0) 58%);
+  -webkit-filter: blur(5px);
+  z-index: 2;
+}
+figure:hover {
+    -webkit-animation: 0.3s tremor ease-out infinite;
+    animation: 0.1s tremor ease-out infinite;
+}
+@keyframes tremor {
+    0%, 25% {
+        left: -1px;
+        -webkit-transform: translateX(-2%);
+        transform: translateX(-2%);
+    }
+    50%, 100% {
+        left: 1px;
+        -webkit-transform: translateX(2%);
+        transform: translateX(2%);
+    }
+}
+
+
+#stage {
+  width: 500px;
+  height: 500px;
+  display: inline-block;
+  line-height: 40px;
+  margin: 20px;
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+}
+
+body {
+  width: 500px;
+  margin: 20px auto;
+  background: linear-gradient(to bottom, rgba(100, 100, 100, 0.2) 0%, rgba(255, 255, 255, 0.5) 40%, #ffffff 100%);
+  background-repeat: no-repeat;
+}
+
+#bubble1 {
+  width: 52px;
+  height: 52px;
+  font-family: sans-serif;
+  font-family: fantasy;
+
+}
+
+</style>
+
+<div id="win1"></div>
+<div id="win2">YOU WIN!</div>
+
+<section id="stage">
+<figure id="bubble1" onClick="checkNextColor(this)">0</figure>
+<figure id="bubble2" onClick="checkNextColor(this)"></figure>
+</section>
+
+<script>
+  var first = document.querySelector("#bubble2");
+  var color = ['radial-gradient(circle at 50% 120%, rgb(246, 129, 129), rgb(239, 232, 118) 10%, rgb(154, 130, 14) 80%, rgb(255, 255, 255) 100%)', 'radial-gradient(circle at 50% 120%, #81e8f6, #76deef 10%, #055194 80%, #062745 100%)','radial-gradient(circle at 50% 120%, rgb(59, 193, 42), rgb(112, 255, 151) 10%, rgb(5, 148, 69) 80%, rgb(18, 69, 6) 100%)'];
+
+  for ( var y = 0; y < 117; y++){
+    function createNew(){
+    var clone = first.cloneNode(true);
+    clone.id ="bubble";
+    clone.style.background =color[Math.floor(Math.random() * color.length)];
+    document.querySelector("section").appendChild(clone);
+    }
+    createNew()
+  }
+
+
+  var bubbles = document.querySelectorAll("figure");
+  var bubblesSameColor = 1;
+  var score = document.getElementById("bubble1");
+  var bubble1 = document.getElementById("bubble1");
+  var bubble1Size = bubble1.offsetWidth;
+  var audio = new Audio("http://music.ogg" )
+
+  for (var i = 0; i<bubbles.length; i++ )
+    bubbles[i].style.background=color[Math.floor(Math.random() * color.length)];
+
+  function checkNextColor(bubble){
+      var nextbubble = bubble.nextElementSibling;
+      var bubbleColor = bubble.style.background;
+      var winWindow1 = document.getElementById("win1");
+      var winWindow2 = document.getElementById("win2");
+      var audio = new Audio('mp3/dustyroom_cartoon_bubble_pop.mp3');
+      audio.play();
+      //console.log(winWindow1, winWindow2);
+      if (nextbubble.style.background === bubbleColor){
+        bubblesSameColor++;
+        bubble1Size++;
+        bubble1.style.width = (bubble1Size + 2) + "px";
+        bubble1.style.height = (bubble1Size + 2) + "px";
+        score.innerHTML = bubblesSameColor;
+        bubble.parentNode.removeChild(bubble);
+        //createNew();
+        checkNextColor(nextbubble);
+        nextbubble.parentNode.removeChild(nextbubble)
+        bubblesSameColor++;
+        if (bubble.id === "bubble1") {
+          //alert('You WIN!');
+          winWindow1.style.display='block';
+          winWindow2.innerHTML = "YOU WIN " + bubblesSameColor + "$";
+          winWindow2.style.display='block';
+          setTimeout(function() {location.reload(true) }, 3000)
+        }
+        //createNew();
+    }
+      //console.log(bubblesSameColor);
+    }
+
+
+
+</script>
+
+</body>
+</html>
